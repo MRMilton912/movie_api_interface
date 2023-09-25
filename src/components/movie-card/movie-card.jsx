@@ -1,3 +1,4 @@
-export const MovieCard = ({ movie }) => {
-  return <div>{movie.title}</div>;
+export const MovieCard = ({ movie, onClick }) => {
+  return <div onClick={onClick}>
+   {movie.title}</div>;
 };
