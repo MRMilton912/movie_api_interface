@@ -27175,32 +27175,32 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([
         {
             id: 1,
-            title: "The Departed'",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
+            title: "The Departed",
+            image: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSU0SP40gBSnIxxWMpN4-OYUXDRKsOFZX6L5dNv0srZlwKiAlvy",
             Director: "Martin Scorsese"
         },
         {
             id: 2,
             title: "The Wolf of Wall Street",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51WAikRq37L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+            image: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTrqI60p3I82Q67Wh6HEyDC24Orl0qFzSWNX7EH6niO1SnvBsPl",
             Director: "Martin Scorsese"
         },
         {
             id: 3,
             title: "Casino",
-            image: "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg",
+            image: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT3OF-ScT2zplAWB1QnfLeXKYygKDnQbQmnn8oMldgKtsbgxpr2",
             Director: "Martin Scorsese"
         },
         {
             id: 4,
             title: "Kill Bill",
-            image: "https://images-na.ssl-images-amazon.com/images/I/51HbNW6RzhL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+            image: "https://upload.wikimedia.org/wikipedia/en/2/2c/Kill_Bill_Volume_1.png",
             Director: "Quentin Tarantino"
         },
         {
             id: 5,
             title: "Django Unchained",
-            image: "https://images-na.ssl-images-amazon.com/images/I/41MBLi5a4jL._SX384_BO1,204,203,200_.jpg",
+            image: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSnm2FczCxSnt69XUZqqI5-sfy66SvjiV0du9mfUKRRCGqVAurt",
             Director: "Quentin Tarantino"
         }
     ]);
@@ -27241,7 +27241,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "y5wKc3wHT1TTcitA/n09OR/jxS4=");
+_s(MainView, "8iiwMe50Si7l+Iv3dE/bcpr1cBA=");
 _c = MainView;
 exports.default = MainView;
 var _c;
@@ -27502,14 +27502,14 @@ const MovieView = ({ movie, onBackClick })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Author: "
+                        children: "Director: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 12,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.author
+                        children: movie.director
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 13,
