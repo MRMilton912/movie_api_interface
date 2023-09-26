@@ -2,49 +2,28 @@ import { useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 //import { LoginView } from "../login-view/login-view";
+import { useState, useEffect } from "react";
 
 
 export const MainView = () => {
-  const [movies, setMovies] = useState([
-    {
-      id: 1,
-      title: "The Departed",
-      image:
-        "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSU0SP40gBSnIxxWMpN4-OYUXDRKsOFZX6L5dNv0srZlwKiAlvy",
-      Director: "Martin Scorsese"
-    },
-    {
-      id: 2,
-      title: "The Wolf of Wall Street",
-      image:
-        "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTrqI60p3I82Q67Wh6HEyDC24Orl0qFzSWNX7EH6niO1SnvBsPl",
-      Director: "Martin Scorsese"
-    },
-    {
-      id: 3,
-      title: "Casino",
-      image:
-        "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT3OF-ScT2zplAWB1QnfLeXKYygKDnQbQmnn8oMldgKtsbgxpr2",
-      Director: "Martin Scorsese"
-    },
-    {
-      id: 4,
-      title: "Kill Bill",
-      image:
-        "https://upload.wikimedia.org/wikipedia/en/2/2c/Kill_Bill_Volume_1.png",
-      Director: "Quentin Tarantino"
-    },
-    {
-      id: 5,
-      title: "Django Unchained",
-      image:
-        "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSnm2FczCxSnt69XUZqqI5-sfy66SvjiV0du9mfUKRRCGqVAurt",
-      Director: "Quentin Tarantino"
-    }
-  ]);
+  const [movies, setMovies] = useState([]);
 
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("https://openlibrary.org/search.json?q=star+wars")
+      .then((response) => response.json())
+      .then((data) => {
+        const movieFromApi = data.docs.map((doc) => {
+          return {
+            id: doc.key,
+            title: doc.title,
+          };
+        });
+        setMovies(movieFromApi);
+      });
+  }, []);
 
 //  if (!user) {
 //    return <LoginView/>;
