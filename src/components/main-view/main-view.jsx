@@ -16,7 +16,10 @@ export const MainView = () => {
 
   useEffect(() => {
     if (!token) return;
-    fetch("https://openlibrary.org/search.json?q=star+wars")
+
+    fetch("https://openlibrary.org/search.json?q=star+wars", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => response.json())
       .then((data) => {
         const movieFromApi = data.docs.map((doc) => {
@@ -27,7 +30,7 @@ export const MainView = () => {
         });
         setMovies(movieFromApi);
       });
-  }, []);
+  }, [token]);
 
   if (!user) {
     return (
