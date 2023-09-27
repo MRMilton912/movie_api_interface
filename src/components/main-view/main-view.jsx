@@ -1,14 +1,19 @@
+import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
-//import { LoginView } from "../login-view/login-view";
-import { useState, useEffect } from "react";
+import { LoginView } from "../login-view/login-view";
+
 
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
-
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
+
+  if (!user) {
+    return <LoginView/>;
+  }
+
 
   useEffect(() => {
     fetch("https://openlibrary.org/search.json?q=star+wars")
@@ -23,11 +28,6 @@ export const MainView = () => {
         setMovies(movieFromApi);
       });
   }, []);
-
-//  if (!user) {
-//    return <LoginView/>;
-//  }
-
 
   if (selectedMovie) {
     return (
