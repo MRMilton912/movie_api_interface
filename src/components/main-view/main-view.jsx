@@ -14,13 +14,13 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [user, setUser] = useState(storedUser? storedUser : null);
+  const [token, setToken] = useState(storedToken? storedToken : null);
 
   useEffect(() => {
     if (!token) return;
 
-    fetch("https://openlibrary.org/search.json?q=star+wars", {
+    fetch("https://openlibrary.org/search.json?q=star+wars", {//fetch, file path
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
@@ -41,6 +41,9 @@ export const MainView = () => {
         <LoginView onLoggedIn={(user, token) => {
           setUser(user);
           setToken(token);
+          console.log({
+            user, token
+          })
         }} />
         or
         <SignupView />
@@ -73,6 +76,7 @@ export const MainView = () => {
   );
 };
 
-<button onClick={() => { setUser(null); }}>Logout</button>
+<button onClick={() => 
+  { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
 
 export default MainView;

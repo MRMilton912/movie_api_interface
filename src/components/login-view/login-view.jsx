@@ -8,21 +8,34 @@ export const LoginView = ({ onLoggedIn }) => {
     event.preventDefault();
 
     const data = {
-      access: username,
-      secret: password
+      Username: username,
+      Password: password
     };
 
-    fetch("https://openlibrary.org/account/login.json", {
+    fetch("https://flixapidata-a1788f46103e.herokuapp.com/login", {
       method: "POST",
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
     }).then((response) => {
       if (response.ok) {
-        onLoggedIn(username);
+        return response.json()
       } else {
         alert("Login failed");
       }
-    });
+    }).then((data) => {
+      onLoggedIn(data.user, data.token)
+    })
   };
+
+  if (data.user) {
+    localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("token", data.token);
+    onLoggedIn(data.user, data.token);
+  } else {
+    alert("No such user");
+  }
 
   return (
     <form onSubmit={handleSubmit}>
