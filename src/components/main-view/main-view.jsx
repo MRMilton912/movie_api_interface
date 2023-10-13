@@ -20,15 +20,17 @@ export const MainView = () => {
   useEffect(() => {
     if (!token) return;
 
-    fetch("https://openlibrary.org/search.json?q=star+wars", {//fetch, file path
+    fetch("https://flixapidata-a1788f46103e.herokuapp.com/movies", {//fetch, file path
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
       .then((data) => {
-        const movieFromApi = data.docs.map((doc) => {
+        const movieFromApi = data.map((doc) => {
           return {
-            id: doc.key,
-            title: doc.title,
+            id: doc._id,
+            title: doc.Title,
+            director: doc.Director.Name,
+            image: doc.ImagePath
           };
         });
         setMovies(movieFromApi);

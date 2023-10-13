@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 
-export const MovieCard = ({ movie, onClick }) => {
-  return <div onClick={onClick}>
+export const MovieCard = ({ key, movie, onClick }) => {
+  console.log(movie)
+  return <div onClick={onClick} key={key}>
    {movie.title}</div>;
 };
 
@@ -11,5 +12,6 @@ MovieCard.propTypes = {
     image: PropTypes.string,//is required
     director: PropTypes.string
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  key: PropTypes.string
 };
