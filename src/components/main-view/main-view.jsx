@@ -3,6 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -14,8 +15,10 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser? storedUser : null);
-  const [token, setToken] = useState(storedToken? storedToken : null);
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
+
+  const logout = () => { setUser(null); setToken(null); localStorage.clear(); }
 
   useEffect(() => {
     if (!token) return;
@@ -40,6 +43,7 @@ export const MainView = () => {
   if (!user) {
     return (
       <>
+        <NavigationBar user={user} onLoggedOut={logout} />
         <LoginView onLoggedIn={(user, token) => {
           setUser(user);
           setToken(token);
@@ -55,30 +59,36 @@ export const MainView = () => {
 
   if (selectedMovie) {
     return (
-      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-    );
+      <>
+        <NavigationBar user={user} onLoggedOut={logout} />
+        <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+      </>
+    )
   }
 
   if (movies.length === 0) {
-    return <div>The list is empty!</div>;
+    return <>
+      <NavigationBar user={user} onLoggedOut={logout} />
+      <div>The movie list is empty</div>
+    </>
   }
 
   return (
-    <div>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          onClick={() => {
-            setSelectedMovie(movie);
-          }}
-        />
-      ))}
-    </div>
+    <>
+      <NavigationBar user={user} onLoggedOut={logout} />
+      <div>
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onClick={() => {
+              setSelectedMovie(movie);
+            }}
+          />
+        ))}
+      </div>
+    </>
   );
 };
-
-<button onClick={() => 
-  { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
 
 export default MainView;

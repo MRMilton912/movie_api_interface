@@ -4,7 +4,7 @@ import { Button, Card } from "react-bootstrap";
 export const MovieCard = ({ key, movie, onClick }) => {
   return (
     <Card>
-      <Card.Img variant="top" src={movie.image} />
+      <Card.Img variant="top" src={"/img/" + movie.image} />
       <Card.Body>
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{movie.director}</Card.Text>

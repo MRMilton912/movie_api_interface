@@ -1,11 +1,11 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand to="/">
           Movies App
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -13,17 +13,17 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
           <Nav className="me-auto">
             {!user && (
               <>
-                <Nav.Link as={Link} to="/login">
+                <Nav.Link to="/loin">
                   Login
                 </Nav.Link>
-                <Nav.Link as={Link} to="/signup">
+                <Nav.Link to="/signup">
                   Signup
                 </Nav.Link>
               </>
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/">
+                <Nav.Link to="/">
                   Home
                 </Nav.Link>
                 <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
