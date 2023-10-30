@@ -2978,11 +2978,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-<<<<<<< HEAD
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"7dr0g","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gQySZ","react-bootstrap/Container":"hEdsw","bootstrap/dist/css/bootstrap.min.css":"i5LP7"}],"iTorj":[function(require,module,exports) {
-=======
 },{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"7dr0g","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gQySZ","react-bootstrap/Container":"hEdsw"}],"iTorj":[function(require,module,exports) {
->>>>>>> c1caace5215ecf4ebb876da0556bedaffe8423c9
 "use strict";
 module.exports = require("ee51401569654d91");
 
