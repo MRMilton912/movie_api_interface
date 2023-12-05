@@ -29,5 +29,3 @@ export const MovieView = ({ movies }) => {
     </div>
   );
 };
-
-// ` '?

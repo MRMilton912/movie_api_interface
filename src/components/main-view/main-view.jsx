@@ -7,6 +7,7 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ProfileView } from "../profile-view/profileview";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -24,8 +25,7 @@ export const MainView = () => {
   useEffect(() => {
     if (!token) return;
 
-    fetch("https://flixapidata-a1788f46103e.herokuapp.com/movies", {
-      //fetch, file path
+    fetch(`https://flixapidata-a1788f46103e.herokuapp.com/movies`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
@@ -62,6 +62,22 @@ export const MainView = () => {
           />
 
           <Route
+            path="/profile"
+            element={
+              !user ? (
+                <Navigate to="/login" />
+              ) : (
+                <ProfileView
+                  user={user}
+                  movies={movies}
+                  token={token}
+                  setUser={setUser}
+                />
+              )
+            }
+          />
+
+          <Route
             path="/login"
             element={
               user ? (
@@ -91,7 +107,12 @@ export const MainView = () => {
               ) : (
                 movies.map((movie) => (
                   <Col className="mb-5" key={movie.id} md={3}>
-                    <MovieCard movie={movie} />
+                    <MovieCard
+                      movie={movie}
+                      user={user}
+                      token={token}
+                      setUser={setUser}
+                    />
                   </Col>
                 ))
               )
